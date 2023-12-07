@@ -1,0 +1,36 @@
+#adjustment {
+  position: relative;
+
+}
+
+#adjustment .modal-dialog {
+	position: fixed;
+	width: 60%;
+	margin: 0;
+	padding: 10px;
+	color: #154069;
+	max-height: 450px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.type-form .select2-container
+{
+	margin-right: 10px;
+}
+
+.adjustment_form .select2-container
+{
+	display: inline-block !important;
+	margin-bottom: 10px;
+}
+
+.modal-open 
+{ 
+	overflow-y: auto; 
+}
+
+#adjustment_tbl
+{
+	table-layout: fixed;
+}

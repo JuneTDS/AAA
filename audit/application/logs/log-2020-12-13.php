@@ -1,0 +1,50 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2020-12-13 23:40:35 --> Could not find the language line "email"
+ERROR - 2020-12-13 23:40:36 --> Could not find the language line "password"
+ERROR - 2020-12-13 23:40:36 --> Severity: Notice --> Undefined variable: assets /home/dotexeco/public_html/bizfiles.com.sg/audit/application/modules/auth/views/login.php 35
+ERROR - 2020-12-13 23:40:36 --> Could not find the language line "remember_me"
+ERROR - 2020-12-13 23:40:36 --> Severity: Notice --> Undefined variable: last_name /home/dotexeco/public_html/bizfiles.com.sg/audit/application/modules/auth/views/login.php 232
+ERROR - 2020-12-13 23:40:36 --> Severity: Notice --> Undefined variable: email /home/dotexeco/public_html/bizfiles.com.sg/audit/application/modules/auth/views/login.php 243
+ERROR - 2020-12-13 23:40:36 --> Could not find the language line "password"
+ERROR - 2020-12-13 23:40:36 --> Could not find the language line "pw_not_same"
+ERROR - 2020-12-13 23:41:34 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:41:42 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:41:55 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:41:57 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:41:57 --> 404 Page Not Found: /index
+ERROR - 2020-12-13 23:41:57 --> 404 Page Not Found: /index
+ERROR - 2020-12-13 23:42:00 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:42:13 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:42:47 --> Severity: Notice --> Undefined variable: planning_conclusion_input /home/dotexeco/public_html/bizfiles.com.sg/audit/application/modules/caf/controllers/Caf.php 10461
+ERROR - 2020-12-13 23:42:47 --> Severity: Notice --> Undefined variable: conclusion_input /home/dotexeco/public_html/bizfiles.com.sg/audit/application/modules/caf/controllers/Caf.php 10657
+ERROR - 2020-12-13 23:43:28 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:43:37 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:44:16 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:45:38 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:45:50 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:46:43 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:46:56 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:47:31 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:48:15 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:49:00 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:49:17 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:49:50 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:51:40 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:52:13 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:52:34 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:52:57 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:53:15 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:53:42 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:54:09 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:54:39 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:55:11 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:55:50 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:56:44 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:56:53 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:57:29 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:58:28 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:58:53 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:59:02 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:59:27 --> Could not find the language line "logout"
+ERROR - 2020-12-13 23:59:55 --> Could not find the language line "logout"

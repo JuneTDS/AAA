@@ -1,0 +1,218 @@
+<div class="modal fade" id="addline_popup" tab-index="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel"><b>Add line to CAF</b>
+        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </h5>
+      </div>
+      
+	      <div class="modal-body">
+	      	<div style="width: 100%;display: inline-block !important;" class="form-inline type-form">
+	     
+		        	Types: 
+		        	<!-- <select class="select2" style="display: inline-block;width: 60%;"></select> -->
+		        	
+					<?php
+						echo form_dropdown('caf_type', $caf_types_dropdown, '', 'class="caf_type select2" style="display: inline-block !important;width: 60%;" required')
+					?>
+
+							
+	        </div>
+	        <div style="display: none" class="awp_div">
+	        	<hr/>
+	        	<form id="audit_awp_info_form">
+	        		<input type="hidden" name="assignment_id" id="assignment_id" value="<?= $assignment_id ?>">
+			      	<div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;vertical-align: top;">Index:</label>
+				        	<div style="display: inline-block;width:65%;">
+					        	<input type="text" name="caf_index" class="caf_index form-control" val="" style="display: inline-block; width: 92.5%;margin-right: 10px;" required="" />
+ 
+					        </div>
+
+			        </div>
+			        <br>
+			        <div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;">CAF Name:</label>
+				        	<div style="display: inline-block;width:65%;">
+					        	<input type="text" name="caf_name" class="caf_name form-control" val="" style="display: inline-block; width: 92.5%;margin-right: 10px;" required="" /> 
+					        </div>
+
+			        </div>
+			    </form>
+	        	
+	        </div>
+	        <div style="display: none" class="leadsheet_div">
+	        	<hr/>
+	        	<form id="audit_leadsheet_form">
+	        		<input type="hidden" name="assignment_id" id="assignment_id" value="<?= $assignment_id ?>">
+			      	<div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;vertical-align: top;">Index:</label>
+				        	<div style="display: inline-block;width:65%;">
+					        	<input type="text" name="caf_index" class="caf_index form-control" val="" style="display: inline-block; width: 92.5%;margin-right: 10px;" required="" />
+ 
+					        </div>
+
+			        </div>
+			        <br>
+			        <div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;">CAF Name:</label>
+				        <!-- 	<input type="text" name="leadsheet_name" class="leadsheet_name form-control" val="" style="display: inline-block; width: 60%;margin-right: 10px;" required="" /> -->
+				     <!--    	<?php
+								echo form_dropdown('leadsheet_name', $leadsheet_list_dropdown, '', 'class="leadsheet_name select2" style="display: inline-block !important;width: 60%;" required')
+							?>  -->
+							<div style="display: inline-block;width:65%;">
+								<input type="text" name="caf_name" class="caf_name form-control" val="" style="display: inline-block; width: 92.5%;margin-right: 10px;" required="" readonly="true" />
+
+								<input type="hidden" name="leadsheet_name" class="leadsheet_name form-control" val="" />
+							</div>
+
+			        </div>
+			        <br>
+
+			         <div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;">Level 1:</label>
+				        <!-- 	<input type="text" name="leadsheet_name" class="leadsheet_name form-control" val="" style="display: inline-block; width: 60%;margin-right: 10px;" required="" /> -->
+				        	<?php
+								echo form_dropdown('lvl1_leadsheet', $lvl1_leadsheet_dropdown, '', 'class="lvl1_leadsheet leadsheet_dropdown select2" style="display: inline-block !important;width: 60%;" ')
+							?> 
+
+			        </div>
+
+
+			         <div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;">Level 2:</label>
+				        <!-- 	<input type="text" name="leadsheet_name" class="leadsheet_name form-control" val="" style="display: inline-block; width: 60%;margin-right: 10px;" required="" /> -->
+				        	<?php
+								echo form_dropdown('lvl2_leadsheet', '', '', 'class="lvl2_leadsheet leadsheet_dropdown select2" style="display: inline-block !important;width: 60%;" ')
+							?> 
+
+			        </div>
+
+
+			         <div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;">Level 3:</label>
+				        <!-- 	<input type="text" name="leadsheet_name" class="leadsheet_name form-control" val="" style="display: inline-block; width: 60%;margin-right: 10px;" required="" /> -->
+				        	<?php
+								echo form_dropdown('lvl3_leadsheet', '', '', 'class="lvl3_leadsheet leadsheet_dropdown select2" style="display: inline-block !important;width: 60%;" ')
+							?> 
+
+			        </div>
+
+
+			         <div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;">Level 4:</label>
+				        <!-- 	<input type="text" name="leadsheet_name" class="leadsheet_name form-control" val="" style="display: inline-block; width: 60%;margin-right: 10px;" required="" /> -->
+				        	<?php
+								echo form_dropdown('lvl4_leadsheet', '', '', 'class="lvl4_leadsheet leadsheet_dropdown select2" style="display: inline-block !important;width: 60%;" ')
+							?> 
+
+			        </div>
+
+
+			         <div style="width: 100%;" class="form-inline">
+			       
+				        	<label style="width: 30%;">Level 5:</label>
+				        <!-- 	<input type="text" name="leadsheet_name" class="leadsheet_name form-control" val="" style="display: inline-block; width: 60%;margin-right: 10px;" required="" /> -->
+				        	<?php
+								echo form_dropdown('lvl5_leadsheet', '', '', 'class="lvl5_leadsheet leadsheet_dropdown select2" style="display: inline-block !important;width: 60%;" ')
+							?> 
+
+			        </div>
+			    </form>
+	        	
+	        </div>
+	        <div style="display: none" class="programme_div">
+	        	<hr/>
+	        	<div class="col-xs-12">
+		        	<input id="search_programme_list" class="form-control search_input_width" aria-controls="datatable-default" placeholder="Search" type="search" style="float:right;" onkeyup="filter_programme()">
+		        </div>
+	        	<form id="add_programme_caf_form">
+		        	<table class="table mb-one main-category" id="programme_list-table" style="width:100%;">
+				  		<thead>
+				  			<tr class="caf_row initial_caf">
+				  				<th style="width: 10%;">&nbsp;</th>
+				  				<th style="width: 20%;">Index</th>
+				  				<th style="width: 70%;">Programme Title</th>
+				
+				  		 	</tr>
+				  		</thead>
+						<tbody>
+							<input type="hidden" name="assignment_id" id="assignment_id" value="<?= $assignment_id ?>">
+		        	<?php 
+						if($audit_programme_list)
+						{
+							foreach($audit_programme_list as $key=>$each)
+				  			{	
+				  			
+
+				  				echo '<tr class="caf_row initial_caf">';
+				  				echo '<td style="width: 10%;"><input type="checkbox" class="cbx" name="selected_programme[]" value="'.$each->id.'"></td>';
+				  				echo '<td style="width: 20%;">'.$each->programme_index.'</td>';
+				  				echo '<td style="width: 70%;">'.$each->title.'</td>';
+				
+				  				echo '</tr>';
+				  				
+				  			}
+				  		}
+				  		else
+				  		{
+				  			echo '<tr class="caf_row initial_caf">';
+				  			echo '<td class="text-center" style="width: 100%;" colspan="3">No Audit Programme(s) to add</td>';
+							echo '</tr>';
+				  		}
+					?>
+						</tbody>
+					</table>
+				</form>
+	        	
+	        </div>
+
+	        
+	    </div>
+	    
+	  <!-- </form> -->
+	    
+      <div class="modal-footer">
+        	<button type="button" class="btn btn-primary" name="addCafLine" id="addCafLine">Add</button>
+			<a href="javascript:void(0)" class="btn btn-default" id="cancel_addline" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	function filter_programme() {
+		// Declare variables
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("search_programme_list");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("programme_list-table");
+		tr = table.getElementsByTagName("tr");
+
+		// Loop through all table rows, and hide those who don't match the search query
+		for (i = 0; i < tr.length; i++) {
+	        td = tr[i].getElementsByTagName("td")[1];
+	        td1 = tr[i].getElementsByTagName("td")[2];
+
+	        if (td || td1) {
+	            txtValue = td.textContent || td.innerText;
+	            txtValue1 = td1.textContent || td1.innerText;
+
+		        if ((txtValue.toUpperCase().indexOf(filter) > -1) || (txtValue1.toUpperCase().indexOf(filter) > -1)) {
+		            tr[i].style.display = "";
+		        } else {
+		            tr[i].style.display = "none";
+		        }
+	        }       
+	    }
+	}
+</script>

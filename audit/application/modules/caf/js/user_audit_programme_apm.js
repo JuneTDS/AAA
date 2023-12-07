@@ -1,0 +1,46 @@
+$(document).ready(function () {
+	$('.select2').select2();
+});
+
+
+$(document).on('click',".save_icon",function(e) 
+{
+    $('#loadingMessage').show();
+    $(".save_icon").addClass("disable");
+   	var form = $('#user_audit_programme_apm_form').serialize();
+
+    $.ajax({
+        type: 'post',
+        url: save_programme_fcm_apm_input_url,
+        data: form ,
+        dataType: 'json',
+        success: function (response) 
+        {
+        	$('#loadingMessage').hide();
+        	setTimeout(function(){ $(".save_icon").removeClass("disable"); }, 3000);
+        	location.reload();
+        }
+    });
+
+});
+
+$(document).on('click',".export_icon",function(e) 
+{
+    $('#loadingMessage').show();
+    // var form = $('#form_balance_sheet').serialize();
+
+    $.ajax({
+        type: 'post',
+        url: export_programme_apm_pdf_url,
+        dataType: 'json',
+        success: function (response) 
+        {
+            $('#loadingMessage').hide();
+            window.open(
+              response.link,
+              '_blank' // <- This is what makes it open in a new window.
+            );
+        }
+    });
+
+});

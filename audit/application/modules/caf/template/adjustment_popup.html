@@ -1,0 +1,100 @@
+<div class="modal fade" id="adjustment" tab-index="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+  	<form id="adjustment_form">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel"><b>ADJUSTMENTS</b></h5>
+      </div>
+      
+	      <div class="modal-body">
+	      	<input type="hidden" name="adjustment_master_id" id="adjustment_master_id" value="">
+	      	<input type="hidden" class="caf_id" name="caf_id" value="<?=$adjustment_caf_id ?>">
+
+	      	<div style="width: 100%;display: inline-block !important;" class="adjustment_form form-inline type-form">
+	     
+		        	Types: 
+		        	<!-- <select class="select2" style="display: inline-block;width: 60%;"></select> -->
+		        	
+					<?php
+						echo form_dropdown('adjustment_type', $types_dropdown, '', 'class="adjustment_type select2" style="display: inline-block;width: 60%;" id="special_select" required')
+					?>
+
+							
+	        </div>
+	        <div style="width: 100%;" class="form-inline">
+	       
+		        	JE No:
+		        	<input type="number" min="0" name="je_no" class="je_no form-control" val="" style="display: inline-block; width: 60%;margin-right: 10px;" required="" /> 
+		        	<input type="hidden" min="0" name="je_no_hidden" class="je_no_hidden form" value="" />
+
+	        </div>
+	        <div style="width: 100%;">
+	        	<a class="amber" href="javascript:void(0)" data-toggle="tooltip" data-trigger="hover" style="font-weight:bold;float: right;top:50px;" data-original-title="Add adjustment line"  onclick=add_adjustment_line() ><i class="fa fa-plus-circle amber" style="font-size:13px;"></i> Add line</a>
+
+	        	<table class="table table-bordered table-striped table-condensed mb-none" id="adjustment_tbl">
+	        		<thead>
+	        			<tr>
+	        				<th style="width: 56%;" class="text-center">Account</th>
+	        				<th style="width: 20%;" class="text-center">Dr/(Cr)</th>
+	        				<th style="width: 20%;" class="text-center">Reference</th>
+	        				<th style="width: 4%;" class="text-center"></th>
+	        			</tr>
+	        		</thead>
+	        		<tbody id="body_add_adjustment">
+	        			<tr>
+	        				<!-- <td><select class="select2" style="width: 100%;"></select></td> -->
+	        				<input type="hidden" class="adjustment_info_id" name="adjustment_info_id[]"  />
+	        				<td>
+	        				<?php
+	        					// print_r($accounts_dropdown);
+								echo form_dropdown('account_id[]', $accounts_dropdown, '', 'class="account_dropdown form-control select2" style="width: 100%;"');
+							?> 
+							</td>
+	        				<td><input type="number" name="adjustment_value[]" class="form-control adjustment_value" style="width: 100%;" /></td>
+	        				<td><input type="text" name="reference[]" class="form-control reference" style="width: 100%;" /></td>
+	        				<td>
+		    					<a class="amber remove_adjustment_line" href="javascript:void(0)" data-toggle="tooltip" data-trigger="hover" style="font-weight:bold;float: right;top:50px;" data-original-title="Remove this line"  onclick=remove_adjustment_line(this) ><i class="fa fa-minus-circle amber" style="font-size:13px;"></i></a>
+		    				</td>
+	        			</tr>
+
+	        			
+	        		</tbody>
+	        	</table>
+
+
+	        </div>
+	        <br>
+	        <div style="width: 100%;">
+		        	Narration
+		        	<textarea name="narration" class="form-control" rows="1" required></textarea>
+	
+	        </div>
+
+	      </div>
+	  <!-- </form> -->
+	    
+      <div class="modal-footer">
+        	<button type="button" class="btn btn-primary" name="saveAdjustment" id="saveAdjustment">Save</button>
+			<a href="javascript:void(0)" class="btn btn-default" id="cancel_adjustment">Cancel</a>
+      </div>
+    </div>
+	</form>
+  </div>
+</div>
+
+<table id="clone_model" style="display: none;" >
+	<tr>
+		<input type="hidden" name="adjustment_info_id[]">
+		<td>
+			<?php
+				// print_r($accounts_dropdown);
+				echo form_dropdown('account_id[]', $accounts_dropdown, '', 'class="account_dropdown form-control" style="width: 100%;"');
+			?> 
+		</td>
+		<td><input type="number" name="adjustment_value[]" class="form-control adjustment_value" style="width: 100%;" /></td>
+		<td><input type="text" name="reference[]" class="form-control" style="width: 100%;" /></td>
+		<td>
+			<a class="amber remove_adjustment_line" href="javascript:void(0)" data-toggle="tooltip" data-trigger="hover" style="font-weight:bold;float: right;top:50px;" data-original-title="Remove this line"  onclick=remove_adjustment_line(this) ><i class="fa fa-minus-circle amber" style="font-size:13px;"></i></a>
+		</td>
+	</tr>
+</table>
