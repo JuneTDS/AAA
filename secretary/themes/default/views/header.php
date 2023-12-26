@@ -209,6 +209,9 @@
 										<?php if (($Admin && !$Individual) || ($Manager && !$Individual)) {?>
 											<li id="header_our_services"><a href="<?= site_url('our_services/'); ?>"><i class="fas fa-user-tie"></i> Our Services</a></li>
 										<?php } ?>
+										<?php if ($Admin) {?>
+											<li id="header_our_gst"><a href="<?= site_url('gst/'); ?>"><i class="fas fa-user-tie"></i> GST</a></li>
+										<?php } ?>
 										<?php if(($Admin && !$Individual)) { ?>
 										<li id="header_manage_user">
 											<a href="<?= site_url('auth/users/'); ?>">

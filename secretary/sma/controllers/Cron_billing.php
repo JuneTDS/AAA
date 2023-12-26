@@ -262,7 +262,7 @@ class Cron_billing extends CI_Controller {
 
         	$gst_attribute = ", gst_category_info.rate as gst_category_info_rate, gst_category_info.gst_category_id";
         	$gst_where = "LEFT JOIN our_service_gst ON our_service_gst.our_service_info_id = client_billing_info.service and our_service_gst.jurisdiction_id = '".$check_gst_status_array[0]["jurisdiction_id"]."' 
-                LEFT JOIN gst_category_info ON gst_category_info.deleted = 0 AND gst_category_info.id = our_service_gst.category_id AND gst_category_info.start_date <= CURRENT_DATE() AND (gst_category_info.end_date >= CURRENT_DATE() OR gst_category_info.end_date IS NULL)";
+                LEFT JOIN gst_category_info ON gst_category_info.deleted = 0 AND gst_category_info.start_date <= CURRENT_DATE() AND (gst_category_info.end_date >= CURRENT_DATE() OR gst_category_info.end_date IS NULL)";
         }
         else
         {

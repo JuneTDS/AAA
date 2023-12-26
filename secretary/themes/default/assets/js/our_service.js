@@ -1448,6 +1448,22 @@ function format (d, index) {
     $a += '<select class="form-control unit_pricing" style="width: 100%;" name="unit_pricing[]" id="unit_pricing"><option value="0">Select Unit Pricing</option></select><div id="form_unit_pricing"></div>';
     $a += '</div>';
     $a += '</div>';
+    
+    // gst ignore
+    $a += '<div class="form-group">';
+    $a += '<label class="col-sm-4">Ignore GST</label>';
+    $a += '<div class="col-sm-8">';
+    // $a += '<input type="checkbox" name="ignore_gst[]" value="'+d.ignore_gst+'" '+(d.ignore_gst == 1 ? 'checked' : '')+' />';
+    $a += `<select class="form-control ignore_gst" style="width: 100%;" name="ignore_gst[]" id="ignore_gst">
+                <option value="">Select GST Status</option>
+                <option value="1" ${d.ignore_gst == 1 ? "selected" : ""}>Yes</option>
+                <option value="0" ${d.ignore_gst == 0 ? "selected" : ""}>No</option>
+            </select>
+            <div id="ignore_gst"></div>`;
+    $a += '</div>';
+    $a += '</div>';
+    // gst ignore
+
     $a += '<div class="form-group display_in_se_section" style="display:none;">';
     $a += '<label class="col-sm-4">Display in Service Engagement</label>';
     $a += '<div class="col-sm-8">';
@@ -1509,7 +1525,7 @@ function format (d, index) {
     $a += '</div>';
     $a += '</div>';
 
-    $a += '<div class="col-md-12 gst_part"><div class="col-md-6"><h4>GST</h4>';
+    $a += '<div class="col-md-12 gst_part" style="display:none"><div class="col-md-6"><h4>GST</h4>';
     $a += '<table class="table table-bordered table-striped table-condensed">';
 
     $a += '<thead>';

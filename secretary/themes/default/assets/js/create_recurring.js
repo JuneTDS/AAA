@@ -1075,9 +1075,16 @@ $(document).on('change','#create_recurring_form #client_name',function(e){
 $(document).on('change','#create_recurring_form #currency',function(e){
     showRow();
 });
+$(document).on('change','#create_recurring_form .billing_date',function(e){
+    showRow();
+});
 
 function showRow(){
     var company_code = $('#client_name option:selected').val();
+
+    var billing_date = $(".billing_date").val();
+    var dateArg = billing_date.split("/");
+    var date = `${dateArg[1]}/${dateArg[0]}/${dateArg[2]}`;
 
     //console.log(company_code);
     if($("#currency option:selected").val() == 0)
@@ -1089,7 +1096,11 @@ function showRow(){
         $.ajax({
             type: "POST",
             url: "billings/get_company_service",
-            data: {"company_code":company_code, "currency": $("#currency option:selected").val()}, // <--- THIS IS THE CHANGE
+            data: {
+                "company_code":company_code,
+                "currency": $("#currency option:selected").val(),
+                "date": date
+            }, // <--- THIS IS THE CHANGE
             dataType: "json",
             success: function(response){
                 $(".tr_recurring").remove();

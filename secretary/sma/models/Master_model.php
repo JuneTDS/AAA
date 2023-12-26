@@ -2315,6 +2315,44 @@ class Master_model extends CI_Model
 
         return $q->row();
     }
+
+    public function getGSTLists(){
+        $q = $this->db->query("SELECT `gst_category_info`.*, `gst_jurisdiction`.`jurisdiction` FROM `gst_category_info` 
+            LEFT JOIN `gst_jurisdiction` ON `gst_jurisdiction`.`id` = `gst_category_info`.`jurisdiction_id` 
+            WHERE `gst_category_info`.`deleted` = 0 ORDER BY `gst_category_info`.`id` DESC");
+        if ($q->num_rows() > 0) {
+            foreach (($q->result()) as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return FALSE;
+    }
+
+    public function getGST($id) {
+        $q = $this->db->query("SELECT `gst_category_info`.*, `gst_jurisdiction`.`jurisdiction` FROM `gst_category_info` 
+            LEFT JOIN `gst_jurisdiction` ON `gst_jurisdiction`.`id` = `gst_category_info`.`jurisdiction_id` 
+            WHERE `gst_category_info`.`deleted` = 0 AND `gst_category_info`.`id` = '".$id."'
+            ORDER BY `gst_category_info`.`id` DESC");
+        if ($q->num_rows() > 0) {
+            foreach (($q->result()) as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return FALSE;
+    }
+
+    public function getJurisdiction() {
+        $q = $this->db->query("SELECT * FROM `gst_jurisdiction`");
+        if ($q->num_rows() > 0) {
+            foreach (($q->result()) as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return FALSE;
+    }
 }
 
 

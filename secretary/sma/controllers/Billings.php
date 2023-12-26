@@ -4228,26 +4228,51 @@ class Billings extends MY_Controller
         {
             $check_gst_status_array = $check_gst_status_query->result_array();
 
-            $p = $this->db->query("select client_billing_info.*, our_service_info.service_type, our_service_info.service_name, our_service_info.calculate_by_quantity_rate, billing_info_service_category.category_description, gst_category_info.gst_category_id, gst_category_info.start_date as gst_start_date, gst_category_info.end_date as gst_end_date, gst_category_info.rate 
+            $p = $this->db->query("select client_billing_info.*, our_service_info.service_type, our_service_info.service_name, our_service_info.ignore_gst, our_service_info.calculate_by_quantity_rate, billing_info_service_category.category_description, gst_category_info.gst_category_id, gst_category_info.start_date as gst_start_date, gst_category_info.end_date as gst_end_date, gst_category_info.rate 
                 FROM client_billing_info 
                 LEFT JOIN our_service_info ON our_service_info.id = client_billing_info.service 
                 LEFT JOIN billing_info_service_category on billing_info_service_category.id = our_service_info.service_type 
                 LEFT JOIN our_service_gst ON our_service_gst.our_service_info_id = client_billing_info.service and our_service_gst.jurisdiction_id = '".$check_gst_status_array[0]["jurisdiction_id"]."' 
-                LEFT JOIN gst_category_info ON gst_category_info.deleted = 0 AND gst_category_info.id = our_service_gst.category_id AND gst_category_info.start_date <= CURRENT_DATE() AND (gst_category_info.end_date >= CURRENT_DATE() OR gst_category_info.end_date IS NULL) 
+                LEFT JOIN gst_category_info ON gst_category_info.deleted = 0 AND gst_category_info.start_date <= CURRENT_DATE() AND (gst_category_info.end_date >= CURRENT_DATE() OR gst_category_info.end_date IS NULL) 
                 where client_billing_info.company_code = '".$company_code."' and client_billing_info.currency = '".$currency."' and client_billing_info.deleted = 0");
 
+            // echo "select client_billing_info.*, our_service_info.service_type, our_service_info.service_name, our_service_info.calculate_by_quantity_rate, billing_info_service_category.category_description, gst_category_info.gst_category_id, gst_category_info.start_date as gst_start_date, gst_category_info.end_date as gst_end_date, gst_category_info.rate 
+            //     FROM client_billing_info 
+            //     LEFT JOIN our_service_info ON our_service_info.id = client_billing_info.service 
+            //     LEFT JOIN billing_info_service_category on billing_info_service_category.id = our_service_info.service_type 
+            //     LEFT JOIN our_service_gst ON our_service_gst.our_service_info_id = client_billing_info.service and our_service_gst.jurisdiction_id = '".$check_gst_status_array[0]["jurisdiction_id"]."' 
+            //     LEFT JOIN gst_category_info ON gst_category_info.deleted = 0 AND gst_category_info.id = our_service_gst.category_id AND gst_category_info.start_date <= CURRENT_DATE() AND (gst_category_info.end_date >= CURRENT_DATE() OR gst_category_info.end_date IS NULL) 
+            //     where client_billing_info.company_code = '".$company_code."' and client_billing_info.currency = '".$currency."' and client_billing_info.deleted = 0";
+
+                if (isset($_POST["date"])) {
+                    $date = date("Y-m-d", strtotime($_POST["date"]));
+                    $gstRateSql = $this->db->query("SELECT `gst_jurisdiction`.`id`, `gst_category_info`.`start_date`, `gst_category_info`.`end_date`, 
+                        `gst_category_info`.`rate`, `gst_jurisdiction`.`jurisdiction`
+                        FROM `gst_category_info` 
+                        LEFT JOIN `gst_jurisdiction` on `gst_jurisdiction`.`id` = `gst_category_info`.`jurisdiction_id`
+                        WHERE `gst_jurisdiction`.`id` = ".$check_gst_status_array[0]["jurisdiction_id"]." 
+                        AND `gst_category_info`.`deleted` = 0 AND `gst_category_info`.`start_date` <= '".$date."' 
+                        AND (`gst_category_info`.`end_date` >= '".$date."' OR `gst_category_info`.`end_date` is null)
+                        ORDER BY `start_date` DESC LIMIT 1;");
+                    $gstRate = $gstRateSql->result_array();
+                }
+            
             if ($p->num_rows() > 0) 
             {
                 foreach (($p->result_array()) as $row) 
                 {
-                    if($row["rate"] == NULL)
-                    {
+                    if($row["ignore_gst"] == true) {
                         $row["rate"] = 0;
+                    } else {
+                        if (isset($_POST["date"])) {
+                            $row["rate"] = $gstRate[0]["rate"];
+                        }
                     }
                     if($row["gst_category_id"] == NULL)
                     {
                         $row["gst_category_id"] = 0;
                     }
+                    
                     $row["gst_new_way"] = 1;
                     $data[] = $row;
                 }
@@ -4593,12 +4618,12 @@ class Billings extends MY_Controller
                     if($q[0]["building_name"] != "")
                     {
                         $unit_no = '#'.$q[0]["unit_no1"]."-".$q[0]["unit_no2"].' '.$q[0]["building_name"].'
-        SINGAPORE '.$q[0]["postal_code"];
+                            SINGAPORE '.$q[0]["postal_code"];
                     }
                     else
                     {
                         $unit_no = '#'.$q[0]["unit_no1"]."-".$q[0]["unit_no2"].'
-        SINGAPORE '.$q[0]["postal_code"];
+                            SINGAPORE '.$q[0]["postal_code"];
                     }
                 }
                 else
@@ -4606,7 +4631,7 @@ class Billings extends MY_Controller
                     if($q[0]["building_name"] != "")
                     {
                         $unit_no = $q[0]["building_name"].'
-        SINGAPORE '.$q[0]["postal_code"];
+                        SINGAPORE '.$q[0]["postal_code"];
                     }
                     else
                     {
@@ -4615,7 +4640,7 @@ class Billings extends MY_Controller
                 }
 
                 $address = $q[0]["street_name"].'
-        '.$unit_no;
+                    '.$unit_no;
             }
             else
             {

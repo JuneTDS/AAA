@@ -203,6 +203,7 @@ class Our_services extends MY_Controller
                 $data['calculate_by_quantity_rate']=$_POST['calculate_by_quantity_rate'][$i];
                 $data['service_type']=$_POST['service_type'][$i];
                 $data['service_name']=$_POST['service_name'][$i];
+                $data['ignore_gst']=$_POST['ignore_gst'][$i];
                 $data['invoice_description']=$_POST['invoice_description'][$i];
                 $data['amount']=round((float)(str_replace(',', '', $_POST['amount'][$i])), 2);
                 $data['unit_pricing']=$_POST['unit_pricing'][$i];
